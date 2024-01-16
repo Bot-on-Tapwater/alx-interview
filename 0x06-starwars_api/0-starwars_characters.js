@@ -7,6 +7,7 @@ const movieId = process.argv[2];
 
 const starWarsUrl = `https://swapi-api.alx-tools.com/api/films/${movieId}`;
 
+
 async.waterfall([
   function (callback) {
     request.get(starWarsUrl, (error, response, body) => {
