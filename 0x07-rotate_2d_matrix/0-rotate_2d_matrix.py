@@ -1,34 +1,20 @@
 #!/usr/bin/python3
-"""Implement rotate_2d_matrix function"""
-
-import copy
+"""
+Rotate 2D Matrix
+"""
 
 
 def rotate_2d_matrix(matrix):
     """
-    Rotates a 2D matrix in place by 90 degrees clockwise.
-
-    Args:
-        matrix (list of lists): The 2D matrix to be rotated.
-
-    Returns:
-        None
+    Rotate a 2D matrix 90 degrees clockwise in-place.
     """
+    n = len(matrix)
 
-    cp_mx = copy.deepcopy(matrix)
+    # Transpose the matrix
+    for i in range(n):
+        for j in range(i + 1, n):
+            matrix[i][j], matrix[j][i] = matrix[j][i], matrix[i][j]
 
-    row_number = 0
-
-    index = 0
-
-    len_mtx = (len(matrix) - 1)
-
-    while index <= len_mtx:
-        index_cp_mx = (len(matrix) - 1)
-
-        for row in matrix:
-            row[len_mtx - index] = cp_mx[row_number][len_mtx - index_cp_mx]
-            index_cp_mx -= 1
-
-        row_number += 1
-        index += 1
+    # Reverse each row
+    for i in range(n):
+        matrix[i].reverse()
